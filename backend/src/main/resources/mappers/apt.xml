@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.vue.mapper.HouseMapper">
+
+	<!-- 아파트 하나 조회 -->
+	<select id="selectHouse" parameterType="BigInteger" resultType="SelectHouseDto">
+		select h.apartmentName, h.buildYear, b.sidoName, b.gugunName, b.dongName, h.roadName, h.roadNameBonbun, h.jibun, h.lng, h.lat from houseinfo h join baseaddress b on h.dongCode = b.dongCode where h.aptCode = #{aptCode};
+	</select>
+	
+	<!-- 아파트 거래 정보 리스트 전체 -->
+	<select id="listHouse" parameterType="BigInteger" resultType="HouseDealDto">
+	<![CDATA[select dealAmount, dealYear, dealMonth, dealDay, area, floor from housedeal where aptCode = #{aptCode} and dealYear >= Year(now())-5]]>
+	</select>
+	
+	<!-- 아파트 거래 정보 리스트 1년 전 -->
+	<select id="OneYearlistHouse" parameterType="BigInteger" resultType="HouseDealDto">
+	<![CDATA[select dealAmount, dealYear, dealMonth, dealDay, area, floor from housedeal where aptCode = #{aptCode} and dealYear >= Year(now())-1]]>
+	</select>
+	
+	<!-- 아파트 거래 정보 리스트 년도별-->
+	<select id="YearlistHouse" parameterType="BigInteger" resultType="YearListHouseDto">
+	<![CDATA[select avg(dealAmount) dealAmount, count(*) count, dealYear from housedeal where aptCode = #{aptCode} and dealYear >= Year(now())-5 group by dealYear]]>
+	</select>
+	
+	
+
+</mapper>

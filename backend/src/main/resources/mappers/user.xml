@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.vue.mapper.UserMapper">
+	<!-- 회원등록 -->
+	<insert id="insertUser" parameterType="userDto">
+		insert into user(id, password, name, email, registDate)
+		values(#{id}, #{password}, #{name}, #{email}, now())
+	</insert>
+	
+	<update id="updateUser" parameterType="userDto">
+		update user
+		set password=#{password},
+		name=#{name},
+		email=#{email}
+		where id=#{id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+		delete from user
+		where id=#{id}
+	</delete>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="userDto" resultType="userDto">
+		select id, email, name, password
+		from user
+		where id = #{id} and password = #{password}
+	</select>
+	
+	<!-- 사용자 정보 반환 -->
+	<select id="userInfo" parameterType="String" resultType="userDto">
+		select name, id, email, registDate, password
+		from user
+		where id = #{id}
+	</select>
+	
+	<!-- id 중복 체크  -->
+	<select id="isUsedId" parameterType="String" resultType="int">
+		select count(id)
+		from user
+		where id=#{id}
+	</select>
+	<!-- 사용자 리스트 가져오기 - 관리자 제외 -->
+	<select id="getUserList" resultType="userDto">
+		select *
+		from user
+		where id not in("admin")
+	</select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.vue.mapper.UserLikeMapper">
+	<insert id="addLikeArea" parameterType="LocalLikeDto">
+		insert into locallike(user_id, dongCode, registDate)
+		values(#{user_id}, #{dongCode}, now());
+	</insert>
+	
+	<insert id="addAptArea" parameterType="AptLikeDto">
+		insert into aptlike(user_id, houseinfo_aptCode, registDate)
+		values(#{user_id},#{houseinfo_aptCode}, now());
+	</insert>
+	
+	<delete id="deleteLikeArea" parameterType="int">
+	 	delete from locallike
+		where no=#{no};
+	</delete>
+	
+	<delete id="deleteAptArea" parameterType="int">
+	 	delete from aptlike
+		where no=#{no};
+	</delete>
+	
+	<select id="getLikeArea" parameterType="String" resultType="BaseaddressDto">
+		select l.no, b.sidoName, b.gugunName, b.dongName, b.dongCode, b.lat, b.lng
+		from locallike l
+		left join baseaddress b
+		on l.dongCode = b.dongCode
+		where l.user_id = #{id};
+	</select>
+	
+	<select id="getLikeApt" parameterType="String" resultType="AptLikeListDto">
+		select a.no, h.*
+		from aptlike a
+		join houseinfo h
+		on a.houseinfo_aptCode = h.aptCode
+		where user_id=#{id}
+	</select>
+</mapper>
