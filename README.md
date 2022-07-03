@@ -35,7 +35,7 @@
 
 - SpringBoot와 Vue.js, MySQL 을 사용한 이유 ( 가장 주가 되는 기술 )<br>
 처음 진행하는 프로젝트인 만큼 가장 대중적이고 현재 많은 기업들에서 사용하고 있는 기술이라고 생각하여 <br>
-BackEnd에는 `SpringBoot`를, FrontEnd에는 `Vue.js`를 DB에는 `MySQ`을 사용했습니다.
+BackEnd에는 `SpringBoot`를, FrontEnd에는 `Vue.js`를 DB에는 `MySQL`을 사용했습니다.
 
 <h2>프로젝트 설계서</h2>
 
