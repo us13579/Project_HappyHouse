@@ -33,9 +33,25 @@
 
 ![tech](https://user-images.githubusercontent.com/97679742/174468560-518fc0aa-b31b-4711-889f-66f554839380.png)
 
-- SpringBoot와 Vue.js, MySQL 을 사용한 이유 ( 가장 주가 되는 기술 )<br>
-처음 진행하는 프로젝트인 만큼 가장 대중적이고 현재 많은 기업들에서 사용하고 있는 기술이라고 생각하여 <br>
-BackEnd에는 `SpringBoot`를, FrontEnd에는 `Vue.js`를 DB에는 `MySQL`을 사용했습니다.
+- BackEnd
+    - SpringBoot<br>
+    Spring이 아닌 SpringBoot를 선택한 이유는 SpringBoot는 내장웹서버를 가지고 있어 jar로 실행가능할 뿐만 아니라 여러 설정을 자동화, 라이브러리 버전 관리를 자동화 해주는 편의성에 큰 장점을 느껴 SpringBoot를 선택했습니다.
+    - JWT<br>
+    서버 기반 인증 시스템과 달리 상태를 유지하지 않는 stateless한 구조를 갖는 토큰 기반 인증 시스템 JWT를 사용했습니다.
+    - JSOUP<br>
+    웹 크롤링을 위해 HTML 문서에 저장된 구문을 가져오기 위해 사용했습니다.
+    - MYSQL<br>
+    복잡한 쿼리를 사용하지 않고 무료이고 큰 트래픽과 데이터를 다루지 않기 때문에 ORACLE 보다 MYSQL을 선택했습니다.
+
+- FrontEnd
+    - Vue<br>
+    초보자가 쉽게 접근할 수 있고 배운 것을 활용하는데 의의가 있어서 Vue 를 선택했습니다.
+    - BootStrap<br>
+    빠르고 페어간의 FrontEnd 의사소통을 좀 더 편하게 하며 반응형 웹을 개발하고자 BootStrap을 선택했습니다.
+    - Kakaomap<br>
+        간단하게 open API를 사용할 수 있으며 많은 기능들이 있어 사용했습니다.
+    - vue-chartjs<br>
+        차트를 쉽게 그릴 수 있는 vue의 chart.js 라이브러리를 이용하였습니다.
 
 <h2>프로젝트 설계서</h2>
 
